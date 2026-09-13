@@ -1,4 +1,4 @@
-export type EnquiryStatus = "New" | "Contacted" | "In Progress" | "Resolved";
+export type EnquiryStatus = "New" | "Contacted" | "In Progress" | "Closed";
 
 export interface IEnquiry {
   name: string;
