@@ -8,7 +8,7 @@ import Services from "./pages/Services";
 import Courses from "./pages/Courses";
 import Chatbot from "./pages/Chatbot";
 import Contact from "./pages/Contact";
-import ProtectedAdmin from "./components/ProtectedAdmin";
+import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 
 function App() {
@@ -22,8 +22,9 @@ function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin" element={<ProtectedAdmin />} />
+
         <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
 
       <Footer />

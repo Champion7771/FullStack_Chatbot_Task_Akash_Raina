@@ -25,12 +25,12 @@ export default function AdminLogin() {
         password,
       });
 
-      // JWT is stored in an HttpOnly cookie.
-      // We do NOT use localStorage here.
+      // Cookie is automatically stored by browser
       navigate("/admin");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Admin login failed:", error);
-      alert("Invalid email or password.");
+
+      alert(error.response?.data?.message || "Invalid email or password.");
     } finally {
       setLoading(false);
     }

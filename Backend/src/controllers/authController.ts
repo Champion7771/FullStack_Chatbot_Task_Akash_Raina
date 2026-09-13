@@ -13,29 +13,27 @@ export const loginAdmin = async (req: Request, res: Response) => {
       });
     }
 
-    // Find admin by email
     const admin = await Admin.findOne({ email });
-    console.log("LOGIN EMAIL:", email);
-    console.log("ADMIN FOUND:", !!admin);
+
     if (!admin) {
       return res.status(401).json({
         message: "Invalid email or password.",
       });
     }
 
-    // Check password
     const passwordCorrect = await bcrypt.compare(password, admin.password);
-    console.log("PASSWORD CORRECT:", passwordCorrect);
+
     if (!passwordCorrect) {
       return res.status(401).json({
         message: "Invalid email or password.",
       });
     }
 
-    // Create JWT
+    // IMPORTANT: role must be included in JWT
     const token = jwt.sign(
       {
-        id: admin._id,
+        id: admin._id.toString(),
+        email: admin.email,
         role: admin.role,
       },
       process.env.JWT_SECRET as string,
@@ -44,12 +42,12 @@ export const loginAdmin = async (req: Request, res: Response) => {
       },
     );
 
-    // Store token in HttpOnly cookie
     res.cookie("adminToken", token, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
+      path: "/",
     });
 
     return res.status(200).json({
@@ -65,7 +63,12 @@ export const loginAdmin = async (req: Request, res: Response) => {
 };
 
 export const logoutAdmin = (_req: Request, res: Response) => {
-  res.clearCookie("adminToken");
+  res.clearCookie("adminToken", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+  });
 
   return res.status(200).json({
     message: "Logout successful.",

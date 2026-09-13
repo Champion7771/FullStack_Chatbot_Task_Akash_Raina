@@ -29,8 +29,17 @@ export default function Admin() {
       const response = await api.get("/enquiries");
 
       setEnquiries(response.data.enquiries);
-    } catch (error) {
-      console.error("Failed to fetch enquiries:", error);
+    } catch (error: any) {
+      console.error(
+        "Failed to fetch enquiries:",
+        error.response?.data || error,
+      );
+
+      if (error.response?.status === 401 || error.response?.status === 403) {
+        window.location.href = "/admin-login";
+        return;
+      }
+
       alert("Failed to load enquiries.");
     } finally {
       setLoading(false);
@@ -78,9 +87,15 @@ export default function Admin() {
         ...selected,
         status: status,
       });
-    } catch (error) {
-      console.error("Failed to update status:", error);
-      alert("Failed to update enquiry status.");
+    } catch (error: any) {
+      console.error("Failed to fetch enquiries:", error);
+
+      if (error.response?.status === 401) {
+        window.location.href = "/admin-login";
+        return;
+      }
+
+      alert("Failed to load enquiries.");
     }
   };
 

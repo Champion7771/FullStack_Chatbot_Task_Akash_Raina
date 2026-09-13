@@ -4,21 +4,20 @@ import cookieParser from "cookie-parser";
 import mongoSanitize from "@exortek/express-mongo-sanitize";
 
 import enquiryRoutes from "./routes/enquiryRoutes";
-import errorMiddleware from "./middleware/errorMiddleware";
 import authRoutes from "./routes/authRoutes";
+import errorMiddleware from "./middleware/errorMiddleware";
 
 const app = express();
 
 app.use(
   cors({
-    origin: "https://full-stack-chatbot-task-akash-raina.vercel.app", // no trailing slash
+    origin: "https://full-stack-chatbot-task-akash-raina.vercel.app",
     credentials: true,
   }),
 );
 
 app.use(express.json());
 app.use(mongoSanitize());
-
 app.use(cookieParser());
 
 app.get("/", (_req, res) => {
@@ -28,7 +27,6 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-
 app.use("/api/enquiries", enquiryRoutes);
 
 app.use(errorMiddleware);

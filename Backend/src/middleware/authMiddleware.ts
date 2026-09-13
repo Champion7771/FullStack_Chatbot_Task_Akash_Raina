@@ -13,6 +13,7 @@ export const adminAuth = (req: Request, res: Response, next: NextFunction) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
       id: string;
+      email: string;
       role: string;
     };
 
@@ -26,6 +27,8 @@ export const adminAuth = (req: Request, res: Response, next: NextFunction) => {
 
     next();
   } catch (error) {
+    console.error("AUTH ERROR:", error);
+
     return res.status(401).json({
       message: "Invalid or expired token.",
     });
