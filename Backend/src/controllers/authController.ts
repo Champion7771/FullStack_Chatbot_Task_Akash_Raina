@@ -15,7 +15,8 @@ export const loginAdmin = async (req: Request, res: Response) => {
 
     // Find admin by email
     const admin = await Admin.findOne({ email });
-
+    console.log("LOGIN EMAIL:", email);
+    console.log("ADMIN FOUND:", !!admin);
     if (!admin) {
       return res.status(401).json({
         message: "Invalid email or password.",
@@ -24,7 +25,7 @@ export const loginAdmin = async (req: Request, res: Response) => {
 
     // Check password
     const passwordCorrect = await bcrypt.compare(password, admin.password);
-
+    console.log("PASSWORD CORRECT:", passwordCorrect);
     if (!passwordCorrect) {
       return res.status(401).json({
         message: "Invalid email or password.",
@@ -46,8 +47,8 @@ export const loginAdmin = async (req: Request, res: Response) => {
     // Store token in HttpOnly cookie
     res.cookie("adminToken", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
 

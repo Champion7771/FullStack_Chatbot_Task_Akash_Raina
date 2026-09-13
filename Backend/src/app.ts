@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://full-stack-chatbot-task-akash-raina.vercel.app", // no trailing slash
     credentials: true,
   }),
 );
