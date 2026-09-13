@@ -13,7 +13,7 @@ A full-stack **TypeScript** web application built for a drone services & trainin
 ![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose%209-47A248?logo=mongodb&logoColor=white)
 ![JWT](https://img.shields.io/badge/Auth-JWT%20%2B%20HttpOnly%20Cookie-black)
 
-## 📌 Table of Contents
+## Table of Contents
 
 - [Overview](#-overview)
 - [Features](#-features)
@@ -324,7 +324,7 @@ The project has since been deployed and hardened — most of the auth/URL issues
 - ~~No mobile navigation~~ → `Navbar.tsx` now includes a working hamburger menu.
 - ~~`enquiryTypes.ts` said `"Resolved"`, schema/UI said `"Closed"`~~ → both now use `"Closed"`.
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Remove or properly wire up the unused `ProtectedAdmin.tsx` guard
 - [ ] Stop committing `Backend/dist/` — add it to `.gitignore`
@@ -333,7 +333,7 @@ The project has since been deployed and hardened — most of the auth/URL issues
 - [ ] Connect the chatbot to a real AI/LLM endpoint (optional upgrade)
 - [ ] Add CI (lint + build) on top of the existing Vercel deployment
 
-## 📸 Screenshots
+## Screenshots
 
 Create a `screenshots/` folder at the repository root and capture the pages below at a reasonably wide viewport (≥1280px) so text and layout stay crisp. Suggested filenames are shown so the embeds below work as-is once you drop the images in.
 
@@ -352,12 +352,12 @@ Create a `screenshots/` folder at the repository root and capture the pages belo
 
 ## Screenshots
 
-![Home](./screenshots/home.jpeg) | ![Services](./screenshots/services.png) | ![Courses](./screenshots/courses.png) |
+![Home](./screenshots/home.jpeg) ![Services](./screenshots/services.png)  ![Courses](./screenshots/courses.png) 
 
 
-![Chatbot](./screenshots/chatbot.jpeg) | ![Contact Form](./screenshots/contact.jpeg) |
+![Chatbot](./screenshots/chatbot.jpeg)  ![Contact Form](./screenshots/contact.jpeg) 
 
-![Admin Login](./screenshots/admin-login.jpeg) | ![Admin Dashboard](./screenshots/admin-dashboard.jpeg) | ![Enquiry Modal](./screenshots/enquiry-detail.jpeg)
+![Admin Login](./screenshots/admin-login.jpeg)  ![Admin Dashboard](./screenshots/admin-dashboard.jpeg)  ![Enquiry Modal](./screenshots/enquiry-detail.jpeg)
 
 ## Author
 
