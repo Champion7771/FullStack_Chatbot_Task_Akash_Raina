@@ -37,15 +37,9 @@ export default function Admin() {
     }
   };
 
-  // Load enquiries when page loads and check for admin token
+  // Load enquiries when page loads
+  // Authentication is handled by the HttpOnly cookie.
   useEffect(() => {
-    const token = localStorage.getItem("adminToken");
-
-    if (!token) {
-      window.location.href = "/admin-login";
-      return;
-    }
-
     loadEnquiries();
   }, []);
 
@@ -114,6 +108,7 @@ export default function Admin() {
     }
   };
 
+  // Logout
   const logoutAdmin = async () => {
     try {
       await api.post("/auth/logout");

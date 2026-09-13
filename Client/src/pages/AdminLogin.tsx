@@ -7,6 +7,7 @@ export default function AdminLogin() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,15 +18,21 @@ export default function AdminLogin() {
     }
 
     try {
+      setLoading(true);
+
       await api.post("/auth/login", {
         email,
         password,
       });
 
+      // JWT is stored in an HttpOnly cookie.
+      // We do NOT use localStorage here.
       navigate("/admin");
     } catch (error) {
       console.error("Admin login failed:", error);
       alert("Invalid email or password.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -68,9 +75,10 @@ export default function AdminLogin() {
 
           <button
             type="submit"
-            className="w-full cursor-pointer rounded-lg bg-yellow-400 px-4 py-3 font-semibold text-black hover:bg-yellow-500"
+            disabled={loading}
+            className="w-full cursor-pointer rounded-lg bg-yellow-400 px-4 py-3 font-semibold text-black hover:bg-yellow-500 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
