@@ -51,7 +51,7 @@ The two halves are fully decoupled — the `Client` is a Vite/React single-page 
 - Enquiry / Contact form with live client-side validation and a success confirmation
 
 **Admin-facing**
-- Email + password login, session handled via a signed JWT in an httpOnly cookie
+- Email + password login, session handled via a signed JWT in an httpOnly cookie(email-admin@dronetv.com, password-admin123)
 - Dashboard summary cards — Total, New, In Progress, Closed enquiry counts
 - Search by name/email/phone and filter by user type (Student / Customer / Other)
 - Enquiry detail modal — read the full message, change status, or delete the record
@@ -352,7 +352,7 @@ Create a `screenshots/` folder at the repository root and capture the pages belo
 
 ## Screenshots
 
-![Home](./screenshots/home.jpeg) ![Services](./screenshots/services.png)  ![Courses](./screenshots/courses.png) 
+![Home](./screenshots/home.jpeg) ![Services](./screenshots/services.jpeg)  ![Courses](./screenshots/courses.jpeg) 
 
 
 ![Chatbot](./screenshots/chatbot.jpeg)  ![Contact Form](./screenshots/contact.jpeg) 
